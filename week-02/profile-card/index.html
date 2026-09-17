@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Card</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+
+    <header>
+        <h1>My Developer Profile</h1>
+    </header>
+
+    <main>
+        <article class="card p-6 rounded-xl my-3 mx-auto">
+            <img class="avatar" src="https://api.dicebear.com/10.x/avataaars/svg?seed=Ramazan" alt="Profile Picture">
+            
+            <div class="card-content">
+                <h2>Ramazan Abdyashim</h2>
+                <p class="bio">
+                    I am a third-year university student focusing on backend software engineering and distributed systems architecture with Go. In my leisure time, I enjoy playing video games and watching older movies.
+                </p>
+                
+                <div class="links">
+                    <a href="https://github.com/k3rlll" target="_blank">GitHub</a>
+                    <a href="mailto:r_abdyashim@kbtu.kz">Email</a>
+                    <button id="like-btn" class="like-button">♡ Like</button>
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Ramazan Abdyashim</p>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+</body>
+</html>
