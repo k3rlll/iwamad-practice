@@ -12,11 +12,14 @@ type ProfileCardProps = {
 export default function ProfileCard({ name, role, avatarUrl, bio, skills }: ProfileCardProps) {
   return (
     <div className="profile-card">
-      {avatarUrl && (
-        <img src={avatarUrl} alt={name} className="avatar" />
-      )}
+      <div className="profile-card-left">
+        {avatarUrl && (
+          <img src={avatarUrl} alt={name} className="avatar" />
+        )}
+        <LikeButton />
+      </div>
       
-      <div className="profile-info">
+      <div className="profile-card-right">
         <h2>{name}</h2>
         <p className="role">{role}</p>
         <p className="bio">{bio}</p>
@@ -25,10 +28,6 @@ export default function ProfileCard({ name, role, avatarUrl, bio, skills }: Prof
             <SkillBadge key={skill.id} skill={skill} />
           ))}
         </ul>
-      </div>
-
-      <div className="profile-actions">
-        <LikeButton />
       </div>
     </div>
   );
