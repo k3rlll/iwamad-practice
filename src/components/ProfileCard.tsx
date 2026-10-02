@@ -1,46 +1,35 @@
-import { useState } from 'react';
-import SkillBadge, { type Skill } from './SkillBadge';
+import { LikeButton } from './LikeButton';
+import SkillBadge from './SkillBadge';
 
 type ProfileCardProps = {
   name: string;
   role: string;
   avatarUrl?: string;
   bio: string;
-  skills: Skill[];
+  skills: { id: number; label: string }[];
 };
 
 export default function ProfileCard({ name, role, avatarUrl, bio, skills }: ProfileCardProps) {
-  const [isLiked, setIsLiked] = useState(false);
-
   return (
-    <main>
-      <section className="profile-card">
-        {avatarUrl && (
-          <img src={avatarUrl} alt={`Profile picture of ${name}`} width="300" />
-        )}
+    <div className="profile-card">
+      {avatarUrl && (
+        <img src={avatarUrl} alt={name} className="avatar" />
+      )}
+      
+      <div className="profile-info">
         <h2>{name}</h2>
-        <h3>{role}</h3>
-        <p>{bio}</p>
+        <p className="role">{role}</p>
+        <p className="bio">{bio}</p>
+        <ul className="skills-list">
+          {skills.map(skill => (
+            <SkillBadge key={skill.id} skill={skill} />
+          ))}
+        </ul>
+      </div>
 
-        <button onClick={() => setIsLiked(!isLiked)}>
-          {isLiked ? '❤️ Liked' : '🤍 Like'}
-        </button>
-
-
-        <div style={{ marginTop: '20px' }}>
-          <h4>My Skills</h4>
-
-          {skills.length === 0 ? (
-            <p>No skills added yet.</p>
-          ) : (
-            <ul>
-              {skills.map(skill => (
-                <SkillBadge key={skill.id} skill={skill} />
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
-    </main>
+      <div className="profile-actions">
+        <LikeButton />
+      </div>
+    </div>
   );
 }
