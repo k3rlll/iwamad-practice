@@ -5,6 +5,8 @@ import { SkillsPage } from './pages/SkillsPage';
 import { ContactPage } from './pages/ContactPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
+
+
 function App() {
   return (
     <Routes>

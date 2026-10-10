@@ -109,3 +109,24 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+header h1, 
+header h2 {
+  margin-right: 20px; 
+}
+
+header span, 
+header nav {
+  margin-top: 8px; 
+}
+
+
+
+.skills-list {
+  margin-top: 24px; 
+}
+
+.profile-card-left button {
+  margin-top: 12px;
+}

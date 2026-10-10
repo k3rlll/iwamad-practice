@@ -23,23 +23,6 @@ main {
     padding: 20px;
 }
 
-.card {
-    background-color: #ffffff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    
-
-    border: 2px solid #e5e7eb; 
-    
-    max-width: 600px;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 20px;
-    transition: border-color 0.3s ease;
-}
-
 @media (min-width: 600px) {
     .card {
         flex-direction: row;

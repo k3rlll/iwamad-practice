@@ -1,23 +1,18 @@
 import { useLikes } from '../context/LikesContext';
+import { Button } from './ui/Button';
 
 export function LikeButton() {
   const { likes, addLike } = useLikes();
 
+  const buttonText = likes > 0 ? `❤️ Liked (${likes})` : '♡ Like';
+
   return (
-    <button
-      className={likes > 0 ? 'liked-state' : ''}
+    <Button 
+      variant="secondary" 
+      aria-label={`Like (${likes} likes)`} 
       onClick={addLike}
-      style={{
-        backgroundColor: likes > 0 ? '#fecaca' : '#f3f4f6',
-        color: likes > 0 ? '#ef4444' : '#374151',
-        padding: '8px 16px',
-        border: 'none',
-        borderRadius: '8px',
-        cursor: 'pointer',
-        marginTop: '10px'
-      }}
     >
-      {likes > 0 ? `❤️ Liked (${likes})` : '♡ Like'}
-    </button>
+      {buttonText}
+    </Button>
   );
 }

@@ -1,6 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router';
+import './styles/tokens.css';
+import './styles/ui.css';
 import { LikesProvider } from './context/LikesContext';
 import App from './App.tsx';
 import './style.css';

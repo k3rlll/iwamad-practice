@@ -1,5 +1,6 @@
 import { LikeButton } from './LikeButton';
 import SkillBadge from './SkillBadge';
+import { Card } from './ui/Card';
 
 type ProfileCardProps = {
   name: string;
@@ -11,7 +12,7 @@ type ProfileCardProps = {
 
 export default function ProfileCard({ name, role, avatarUrl, bio, skills }: ProfileCardProps) {
   return (
-    <div className="profile-card">
+    <Card>
       <div className="profile-card-left">
         {avatarUrl && (
           <img src={avatarUrl} alt={name} className="avatar" />
@@ -29,6 +30,6 @@ export default function ProfileCard({ name, role, avatarUrl, bio, skills }: Prof
           ))}
         </ul>
       </div>
-    </div>
+    </Card>
   );
 }
