@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import type { ChangeEvent, FocusEvent, FormEvent } from 'react';
+import type { ChangeEvent, FocusEvent, SubmitEvent } from 'react';
 import { validateRegistration, type RegistrationValues } from '../lib/validateRegistration';
 import { TextField } from '../components/ui/TextField';
-import { Button } from '../components/ui/Button'; 
+import { Button } from '../components/ui/Button';
+
 export function RegisterPage() {
   const [values, setValues] = useState<RegistrationValues>({
     fullName: '',
@@ -14,6 +15,7 @@ export function RegisterPage() {
 
   const [touched, setTouched] = useState<Partial<Record<keyof RegistrationValues, boolean>>>({});
   const [submitAttempted, setSubmitAttempted] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
 
   const errors = validateRegistration(values);
 
@@ -29,16 +31,19 @@ export function RegisterPage() {
     setTouched((current) => ({ ...current, [event.target.name]: true }));
   };
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
     setSubmitAttempted(true);
+    if (Object.keys(errors).length === 0) {
+      setSubmitted(true);
+    }
   };
 
   const getError = (field: keyof RegistrationValues) => {
     return touched[field] || submitAttempted ? errors[field] : undefined;
   };
 
-  if (submitAttempted && Object.keys(errors).length === 0) {
+  if (submitted) {
     return <p role="status">Thanks, {values.fullName}. You are registered.</p>;
   }
 
@@ -52,8 +57,7 @@ export function RegisterPage() {
         onBlur={handleBlur}
         error={getError('fullName')}
       />
-      
-       <TextField
+      <TextField
         label="Email"
         name="email"
         type="email"
@@ -80,7 +84,7 @@ export function RegisterPage() {
         onBlur={handleBlur}
         error={getError('confirmPassword')}
       />
-      
+
       <div className="field">
         <div className="check">
           <input

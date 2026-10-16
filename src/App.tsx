@@ -16,7 +16,6 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="skills" element={<SkillsPage />} />
         <Route path="contact" element={<ContactPage />} />
-        <Route element="{<RegisterPage" path="register"/>
         <Route path="*" element={<NotFoundPage />} />
         <Route path="register" element={<RegisterPage />} />
       </Route>
